@@ -14,7 +14,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:leunamnauj/Crossplane-Argocd-and-localstack-for-local-environments.git
+    repoURL: https://github.com/leunamnauj/Crossplane-Argocd-and-localstack-for-local-environments.git
     targetRevision: HEAD
     path: test-env
     directory:
