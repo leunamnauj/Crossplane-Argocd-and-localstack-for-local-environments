@@ -1,0 +1,60 @@
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: VPC
+metadata:
+  name: test-env
+spec:
+  forProvider:
+    region: us-east-1
+    cidrBlock: 10.0.0.0/16
+    enableDnsSupport: true
+    enableDnsHostNames: true
+    instanceTenancy: default
+  providerConfigRef:
+    name: localstack
+---
+
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: test-env-subnet1
+spec:
+  forProvider:
+    region: us-east-1
+    availabilityZone: us-east-1b
+    cidrBlock: 10.0.1.0/24
+    vpcIdRef:
+      name: test-env
+    mapPublicIPOnLaunch: false
+  providerConfigRef:
+    name: localstack
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: test-env-subnet2
+spec:
+  forProvider:
+    region: us-east-1
+    availabilityZone: us-east-1c
+    cidrBlock: 10.0.2.0/24
+    vpcIdRef:
+      name: test-env
+    mapPublicIPOnLaunch: false
+  providerConfigRef:
+    name: localstack
+---
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: Subnet
+metadata:
+  name: test-env-subnet3
+spec:
+  forProvider:
+    region: us-east-1
+    availabilityZone: us-east-1c
+    cidrBlock: 10.0.3.0/24
+    vpcIdRef:
+      name: test-env
+    mapPublicIPOnLaunch: false
+  providerConfigRef:
+    name: localstack

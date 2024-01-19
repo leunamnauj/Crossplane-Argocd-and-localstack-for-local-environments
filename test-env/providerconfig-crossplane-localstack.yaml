@@ -1,0 +1,16 @@
+apiVersion: aws.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: localstack
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: localstack-aws-secret
+      namespace: crossplane-system
+      key: creds
+  endpoint:
+    hostnameImmutable: true
+    url:
+      type: Static
+      static: http://localstack.localstack.svc.cluster.local:4566
